@@ -1,5 +1,4 @@
 const STORAGE_KEY = "qixi-2026-xy";
-
 const stations = [
   {
     id: "library",
@@ -65,9 +64,7 @@ const stations = [
     body: "这是我们在学校过的最后一个七夕，不是最后一个七夕。交大会留在身后，索道、夜路和以后的城市还会有。点亮这一站，信才打开。",
   },
 ];
-
 const chant = "知道啦！！！\n烦死啦！！！\n我爱你！！！";
-
 const pathEl = document.getElementById("path");
 const progressEl = document.getElementById("progress");
 const cover = document.getElementById("cover");
@@ -81,14 +78,26 @@ const cardBody = document.getElementById("card-body");
 const lightBtn = document.getElementById("light-btn");
 const copyBtn = document.getElementById("copy-btn");
 const copyOk = document.getElementById("copy-ok");
+const starsWrap = document.getElementById("stars");
+
+// 生成闪烁星星
+for(let i=0;i<130;i++){
+  const dot = document.createElement("div");
+  dot.className = "star-dot";
+  const size = Math.random()*2.2 +0.4;
+  dot.style.width = size +"px";
+  dot.style.height = size +"px";
+  dot.style.left = Math.random()*100 +"%";
+  dot.style.top = Math.random()*100 +"%";
+  dot.style.animationDelay = Math.random()*4 +"s";
+  starsWrap.appendChild(dot);
+}
 
 let lit = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"));
 let currentId = null;
-
 function save() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify([...lit]));
 }
-
 function renderPath() {
   pathEl.innerHTML = stations
     .map((s) => {
@@ -107,7 +116,6 @@ function renderPath() {
     .join("");
   progressEl.textContent = `已点亮 ${lit.size} / 7`;
 }
-
 function openCard(id) {
   const s = stations.find((x) => x.id === id);
   if (!s) return;
@@ -120,38 +128,34 @@ function openCard(id) {
   lightBtn.textContent = lit.has(id) ? "已点亮 · 关闭" : "点亮这一站";
   card.classList.remove("hidden");
 }
-
 function closeCard() {
   card.classList.add("hidden");
   currentId = null;
 }
-
 function maybeLetter() {
   if (lit.size < 7) return;
   journey.classList.add("hidden");
   closeCard();
   letter.classList.remove("hidden");
+  // 触发信件淡入动画
+  setTimeout(()=> letter.classList.add("visible"),60);
   window.scrollTo(0, 0);
 }
-
 document.getElementById("enter-btn").addEventListener("click", () => {
   cover.classList.add("hidden");
   journey.classList.remove("hidden");
   window.scrollTo(0, 0);
   maybeLetter();
 });
-
 pathEl.addEventListener("click", (event) => {
   const btn = event.target.closest(".stop");
   if (!btn) return;
   openCard(btn.dataset.id);
 });
-
 document.getElementById("close-card").addEventListener("click", closeCard);
 card.addEventListener("click", (event) => {
   if (event.target === card) closeCard();
 });
-
 lightBtn.addEventListener("click", () => {
   if (!currentId) return;
   lit.add(currentId);
@@ -160,7 +164,6 @@ lightBtn.addEventListener("click", () => {
   closeCard();
   maybeLetter();
 });
-
 copyBtn.addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(chant);
@@ -174,9 +177,11 @@ copyBtn.addEventListener("click", async () => {
   }
   copyOk.classList.remove("hidden");
 });
-
 if (/MicroMessenger/i.test(navigator.userAgent)) {
   document.getElementById("wechat-tip").classList.remove("hidden");
 }
-
 renderPath();
+// 如果本地已经7站全亮，页面加载完成激活信件动画
+if(lit.size >=7){
+  setTimeout(()=> letter.classList.add("visible"), 200);
+}
