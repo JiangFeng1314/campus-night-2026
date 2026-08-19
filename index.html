@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="description" content="小Y，这是我们在北京交通大学过的最后一个七夕。" />
+    <title>给小Y · 交大最后一个七夕</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="wechat-tip" class="wechat-tip hidden">微信里可能打不开页面。点右上角 ··· ，选「在浏览器打开」。</div>
+    <div id="stars" class="stars" aria-hidden="true"></div>
+
+    <section id="cover" class="screen cover">
+      <img class="cover-photo" src="photos/library.jpg" alt="北京交通大学图书馆" />
+      <div class="cover-mask"></div>
+      <div class="cover-copy">
+        <p class="kicker">2026 · 七夕</p>
+        <h1>小Y</h1>
+        <p class="lead">北京交通大学<br />我们在学校过的最后一个七夕</p>
+        <p class="sub">今晚不赶实验，不看数据，只走一段以前常走的路。</p>
+        <button id="enter-btn" type="button">打开手账</button>
+      </div>
+    </section>
+
+    <section id="journey" class="screen journey hidden">
+      <header class="topbar">
+        <p>北京交通大学 · 夜路</p>
+        <p id="progress">已点亮 0 / 7</p>
+      </header>
+      <p class="journey-hint">点亮七站，七夕的信才会打开。</p>
+      <ol class="path" id="path"></ol>
+    </section>
+
+    <div id="card" class="sheet hidden" role="dialog" aria-modal="true">
+      <div class="sheet-panel">
+        <button class="icon-close" id="close-card" type="button" aria-label="关闭">×</button>
+        <img id="card-photo" alt="" />
+        <p class="card-place" id="card-place"></p>
+        <h2 id="card-title"></h2>
+        <p class="card-body" id="card-body"></p>
+        <button id="light-btn" type="button">点亮这一站</button>
+      </div>
+    </div>
+
+    <section id="letter" class="screen letter hidden">
+      <p class="kicker">第七站之后</p>
+      <h2>写给小Y</h2>
+      <article class="letter-paper">
+        <p>小Y：</p>
+        <p>今年是我们在一起的第二年，也是第一次一起过七夕。更特殊的是，这是我们在北京交通大学过的最后一个七夕。</p>
+        <p>图书馆还在，机械楼的灯也还是那样晚。实验该崩的还是会崩，图该重画的还是得重画，你赶硕士的节点，我在博士这条路上慢慢磨。我们不是没有烦过，只是烦完以后，还是会走到西操场，再把你送到学苑宿舍楼下。</p>
+        <p>天佑会堂记下的是学校里的热闹，看台上、夜路里、滑雪索道上也是。校园这一章要合上了，不是我们要合上。地点会换成别的，人还在。</p>
+        <p>所以今晚不讲大道理。只把我们自己的三句话留给你。</p>
+      </article>
+      <div class="chant">
+        <p>知道啦！！！</p>
+        <p>烦死啦！！！</p>
+        <p>我爱你！！！</p>
+      </div>
+      <div class="film">
+        <img src="photos/concert.jpg" alt="一起去过的现场" />
+        <img src="photos/pitch.jpg" alt="西操场" />
+        <img src="photos/p407.jpg" alt="看台" />
+        <img src="photos/p402.jpg" alt="一起吃饭" />
+        <img src="photos/night.jpg" alt="夜路" />
+        <img src="photos/ski.jpg" alt="滑雪" />
+      </div>
+      <p class="sign">交大校园的最后一个七夕<br />给你，也给我们后面的路</p>
+      <button id="copy-btn" type="button">复制这三句发给我</button>
+      <p id="copy-ok" class="copy-ok hidden">已复制。你回我「今晚收到了」就好。</p>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>
