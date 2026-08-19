@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh‑CN">
+<head>
+<meta charset="UTF‑8">
+<meta name="viewport" content="width=device‑width, initial‑scale=1.0">
+<title>七夕的风｜七夕原创歌词</title>
+<style>
+*{margin:0;padding:0;box‑sizing:border‑box;}
+body{
+  min‑height:100vh;
+  background:#0f1428;
+  color:#f8f2ff;
+  font‑family:"PingFang SC",sans‑serif;
+  position:relative;
+  overflow‑x:hidden;
+  padding:60px 24px 80px;
+}
+.star{
+  position:fixed;
+  border‑radius:50%;
+  background:#fff;
+  animation:twinkle 4s ease‑in‑out infinite;
+  pointer‑events:none;
+  z‑index:0;
+}
+@keyframes twinkle{
+  0%,100%{opacity:0.15;}
+  50%{opacity:0.8;}
+}
+.wrapper{
+  max‑width:520px;
+  margin:0 auto;
+  position:relative;
+  z‑index:1;
+}
+h1{
+  text‑align:center;
+  font‑size:34px;
+  letter‑spacing:4px;
+  color:#ffdded;
+  margin‑bottom:12px;
+}
+.sub‑title{
+  text‑align:center;
+  color:#c2b2dd;
+  font‑size:14px;
+  margin‑bottom:48px;
+}
+.lyric‑block{
+  margin‑bottom:32px;
+}
+.part‑tag{
+  color:#e8b86d;
+  font‑size:13px;
+  margin‑bottom:8px;
+  letter‑spacing:1px;
+}
+.lyric‑line{
+  font‑size:17px;
+  line‑height:2.1;
+  color:#efeaff;
+}
+.chorus‑lines{
+  background:rgba(255,220,240,0.06);
+  padding:16px 20px;
+  border‑radius:14px;
+  border‑left:3px solid #e8b86d;
+}
+.footer‑tip{
+  margin‑top:60px;
+  text‑align:center;
+  color:#8878a2;
+  font‑size:13px;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <h1>风牵晚星</h1>
+  <div class="sub‑title">｜七夕 · 校园原创歌词｜甜美女声流行</div>
+
+  <div class="lyric‑block">
+    <div class="part‑tag">[Verse]</div>
+    <div class="lyric‑line">蝉鸣绕着 教学楼檐</div>
+    <div class="lyric‑line">粉笔字还 留在黑板边</div>
+    <div class="lyric‑line">你递的糖 裹着奶甜</div>
+    <div class="lyric‑line">我攥手心 不敢说谢</div>
+  </div>
+
+  <div class="lyric‑block">
+    <div class="part‑tag">[Pre‑Chorus]</div>
+    <div class="lyric‑line">风掀开 半页的书签</div>
+    <div class="lyric‑line">心跳声 盖过了蝉鸣</div>
+    <div class="lyric‑line">晚风轻轻 蹭过你衣领</div>
+    <div class="lyric‑line">我偷偷 数着星星</div>
+  </div>
+
+  <div class="lyric‑block chorus‑lines">
+    <div class="part‑tag">[Chorus]</div>
+    <div class="lyric‑line">七夕的风 吹过校园</div>
+    <div class="lyric‑line">星光落在 你我肩边</div>
+    <div class="lyric‑line">藏了好久 的小心愿</div>
+    <div class="lyric‑line">今天终于 敢说一遍</div>
+    <div class="lyric‑line">风也软 心也甜</div>
+    <div class="lyric‑line">我们牵手 走在校园</div>
+  </div>
+
+  <div class="lyric‑block">
+    <div class="part‑tag">[Pre‑Chorus]</div>
+    <div class="lyric‑line">你说你 等了好多年</div>
+    <div class="lyric‑line">就等今天 说出思念</div>
+    <div class="lyric‑line">星光落在 你我眉眼</div>
+    <div class="lyric‑line">这瞬间 胜过永远</div>
+  </div>
+
+  <div class="lyric‑block chorus‑lines">
+    <div class="part‑tag">[Chorus]</div>
+    <div class="lyric‑line">七夕的风 吹过校园</div>
+    <div class="lyric‑line">星光落在 你我肩边</div>
+    <div class="lyric‑line">所有美好 都在眼前</div>
+    <div class="lyric‑line">我们的故事 才刚开篇</div>
+    <div class="lyric‑line">风也软 心也甜</div>
+    <div class="lyric‑line">我们牵手 走向明天</div>
+  </div>
+
+  <div class="footer‑tip">2026 · 七夕</div>
+</div>
+
+<script>
+//生成闪烁星空
+const body = document.body;
+for(let i=0;i<110;i++){
+  const s = document.createElement("div");
+  s.className = "star";
+  const sz = Math.random()*2+0.4;
+  s.style.width = sz+"px";
+  s.style.height = sz+"px";
+  s.style.left = Math.random()*100+"%";
+  s.style.top = Math.random()*100+"%";
+  s.style.animationDelay = Math.random()*4+"s";
+  body.appendChild(s);
+}
+</script>
+</body>
+</html>
